@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestão Escolar - Dashboard</title>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-container">
+            <h1 class="logo">📚 Sistema Escolar</h1>
+            <ul class="nav-menu">
+                <li><a href="../html/index.html" class="active">Dashboard</a></li>
+                <li><a href="../html/cursos.html">Cursos</a></li>
+                <li><a href="../html/alunos.html">Alunos</a></li>
+                <li><a href="../html/professores.html">Professores</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <header class="page-header">
+            <h2>Dashboard Geral</h2>
+            <p>Visão geral do sistema de gestão escolar</p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon">📖</div>
+                <h3 id="totalCursos">0</h3>
+                <p>Cursos Ativos</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👨‍🎓</div>
+                <h3 id="totalAlunos">0</h3>
+                <p>Alunos Inscritos</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">👨‍🏫</div>
+                <h3 id="totalProfessores">0</h3>
+                <p>Professores</p>
+            </div>
+        </div>
+
+        <section class="cursos-section">
+            <h3>Cursos Disponíveis</h3>
+            <div id="cursosGrid" class="cards-grid">
+                <div class="loading">Carregando cursos...</div>
+            </div>
+        </section>
+
+        <section class="recent-section">
+            <h3>Últimos Alunos Registados</h3>
+            <div id="recentAlunos" class="list-container">
+                <div class="loading">Carregando...</div>
+            </div>
+        </section>
+    </div>
+
+    <script src="../js/main.js"></script>
+    <script>
+        // Carregar dashboard ao iniciar
+        document.addEventListener('DOMContentLoaded', loadDashboard);
+    </script>
+</body>
+</html>
