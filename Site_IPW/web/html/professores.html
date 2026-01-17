@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestão de Professores</title>
-    <link rel="stylesheet" href="/css/style.css">
+    <title>Gestão de ProfessoresAAAAAAA</title>
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
     <nav class="navbar">
@@ -15,16 +15,15 @@
                 <li><a href="cursos.html">Cursos</a></li>
                 <li><a href="alunos.html">Alunos</a></li>
                 <li><a href="professores.html" class="active">Professores</a></li>
+                <li><a href="disciplinas.html">Disciplinas</a></li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
         <header class="page-header">
             <h2>Gestão de Professores</h2>
             <p>Criar, editar e gerir professores</p>
         </header>
-
         <div class="form-card">
             <h3 id="formTitle">Adicionar Novo Professor</h3>
             <form id="formProfessor">
@@ -35,13 +34,20 @@
                         <label for="professorNome">Nome Completo *</label>
                         <input type="text" id="professorNome" placeholder="Ex: Dr. Maria Santos" required>
                     </div>
-
                     <div class="form-group">
                         <label for="professorEmail">Email *</label>
                         <input type="email" id="professorEmail" placeholder="maria.santos@escola.com" required>
                     </div>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="professorDisciplinas">Disciplinas *</label>
+                    <select id="professorDisciplinas" multiple size="5" style="width: 100%; padding: 8px;">
+                        <option value="">Carregando disciplinas...</option>
+                    </select> 
+                    <small style="color: #666;">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplas disciplinas</small>
+                </div>
+                
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">
                         <span id="btnText">Criar Professor</span>
@@ -52,11 +58,10 @@
                 </div>
             </form>
         </div>
-
         <div class="table-card">
             <div class="table-header">
                 <h3>Lista de Professores</h3>
-                <input type="text" id="searchProfessores" class="search-input" placeholder="🔍 Pesquisar professores...">
+                <input type="text" id="searchProfessores" class="search-input" placeholder="Pesquisar professores...">
             </div>
             <div class="table-responsive">
                 <table id="tabelaProfessores">
@@ -65,7 +70,7 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
-                            <th>Cursos</th>
+                            <th>Disciplinas</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
@@ -78,10 +83,14 @@
             </div>
         </div>
     </div>
-
-    <script src="/js/main.js"></script>
+    <script src="../js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', loadProfessores);
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log(' DOM Carregado!');
+            console.log('Select existe?', document.getElementById('professorDisciplinas'));
+            loadProfessores();
+            loadDisciplinasSelectProfessores(); 
+        });
         document.getElementById('formProfessor').addEventListener('submit', saveProfessor);
         document.getElementById('searchProfessores').addEventListener('input', searchProfessores);
     </script>

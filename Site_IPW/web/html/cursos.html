@@ -15,16 +15,15 @@
                 <li><a href="cursos.html" class="active">Cursos</a></li>
                 <li><a href="alunos.html">Alunos</a></li>
                 <li><a href="professores.html">Professores</a></li>
+                <li><a href="disciplinas.html">Disciplinas</a></li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
         <header class="page-header">
             <h2>Gestão de Cursos</h2>
             <p>Criar, editar e gerir cursos</p>
         </header>
-
         <div class="form-card">
             <h3 id="formTitle">Adicionar Novo Curso</h3>
             <form id="formCurso">
@@ -34,14 +33,7 @@
                     <label for="cursoNome">Nome do Curso *</label>
                     <input type="text" id="cursoNome" placeholder="Ex: Desenvolvimento Web" required>
                 </div>
-
-                <div class="form-group">
-                    <label for="cursoProfessor">Professor Responsável *</label>
-                    <select id="cursoProfessor" required>
-                        <option value="">Selecione um professor</option>
-                    </select>
-                </div>
-
+               
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">
                         <span id="btnText">Criar Curso</span>
@@ -52,37 +44,36 @@
                 </div>
             </form>
         </div>
-
         <div class="table-card">
-            <h3>Lista de Cursos</h3>
+            <div class="table-header">
+                <h3>Lista de Cursos</h3>
+                <input type="text" id="searchCursos" class="search-input" placeholder="🔍 Pesquisar cursos...">
+            </div>
             <div class="table-responsive">
                 <table id="tabelaCursos">
                     <thead>
                         <tr>
                             <th>ID</th>
                             <th>Nome do Curso</th>
-                            <th>Professor</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4" class="loading">Carregando cursos...</td>
+                            <td colspan="3" class="loading">Carregando cursos...</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
     <script src="../js/main.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             loadCursos();
-            loadProfessoresSelect();
         });
-
         document.getElementById('formCurso').addEventListener('submit', saveCurso);
+        document.getElementById('searchCursos').addEventListener('input', searchCursos);
     </script>
 </body>
 </html>
