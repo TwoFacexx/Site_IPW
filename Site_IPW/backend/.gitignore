@@ -1,0 +1,5 @@
+#ignorar o ficheiro que contém senha
+.env
+node_modules/
+.DS_Store
+*.log

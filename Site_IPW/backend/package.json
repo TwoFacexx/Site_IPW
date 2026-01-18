@@ -6,8 +6,10 @@
     "start": "node api.js"
   },
   "dependencies": {
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.3",
     "express": "^4.18.2",
-    "mysql2": "^3.9.0",
-    "cors": "^2.8.5"
+    "git": "^0.1.5",
+    "mysql2": "^3.9.0"
   }
 }

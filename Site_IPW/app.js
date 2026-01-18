@@ -2,7 +2,8 @@ const express = require('express');
 const path = require('path');
 const app = express();
 
-// IMPORTANTE: Serve ficheiros estáticos da pasta 'web'
+
+// Servir ficheiros estáticos da pasta "web"
 app.use(express.static(path.join(__dirname, 'web')));
 
 // Rota principal - serve o index.html
@@ -23,6 +24,10 @@ app.get('/professores', (req, res) => {
     res.sendFile(path.join(__dirname, 'web/html/professores.html'));
 });
 
+app.get('/disciplinas', (req, res) => {
+    res.sendFile(path.join(__dirname, 'web/html/disciplinas.html'));
+});
+
 // Favicon
 app.get('/favicon.ico', (req, res) => {
     res.sendStatus(204);
@@ -35,5 +40,5 @@ app.use((req, res) => {
 
 const PORT = 8081;
 app.listen(PORT, () => {
-    console.log(`Frontend a correr em http://localhost:${PORT}`);
+    console.log(`Frontend a correr em http://localhost:${PORT}`);  
 });

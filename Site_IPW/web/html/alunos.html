@@ -9,22 +9,21 @@
 <body>
     <nav class="navbar">
         <div class="nav-container">
-            <h1 class="logo">📚 Sistema Escolar</h1>
+            <h1 class="logo">Sistema Escolar</h1>
             <ul class="nav-menu">
                 <li><a href="index.html">Dashboard</a></li>
                 <li><a href="cursos.html">Cursos</a></li>
                 <li><a href="alunos.html" class="active">Alunos</a></li>
                 <li><a href="professores.html">Professores</a></li>
+                <li><a href="disciplinas.html">Disciplinas</a></li>
             </ul>
         </div>
     </nav>
-
     <div class="container">
         <header class="page-header">
             <h2>Gestão de Alunos</h2>
             <p>Criar, editar e gerir alunos</p>
         </header>
-
         <div class="form-card">
             <h3 id="formTitle">Adicionar Novo Aluno</h3>
             <form id="formAluno">
@@ -35,13 +34,20 @@
                         <label for="alunoNome">Nome Completo *</label>
                         <input type="text" id="alunoNome" placeholder="Ex: João Silva" required>
                     </div>
-
                     <div class="form-group">
                         <label for="alunoEmail">Email *</label>
                         <input type="email" id="alunoEmail" placeholder="joao.silva@email.com" required>
                     </div>
                 </div>
-
+                
+                <div class="form-group">
+                    <label for="alunoCursos">Cursos *</label>
+                    <select id="alunoCursos" multiple size="5" style="width: 100%; padding: 8px;">
+                        <option value="">Carregando cursos...</option>
+                    </select>
+                    <small style="color: #666;">Segure Ctrl (Windows) ou Cmd (Mac) para selecionar múltiplos cursos</small>
+                </div>
+                
                 <div class="form-actions">
                     <button type="submit" class="btn btn-primary">
                         <span id="btnText">Criar Aluno</span>
@@ -52,11 +58,10 @@
                 </div>
             </form>
         </div>
-
         <div class="table-card">
             <div class="table-header">
                 <h3>Lista de Alunos</h3>
-                <input type="text" id="searchAlunos" class="search-input" placeholder="🔍 Pesquisar alunos...">
+                <input type="text" id="searchAlunos" class="search-input" placeholder=" Pesquisar alunos...">
             </div>
             <div class="table-responsive">
                 <table id="tabelaAlunos">
@@ -65,22 +70,25 @@
                             <th>ID</th>
                             <th>Nome</th>
                             <th>Email</th>
+                            <th>Cursos</th>
                             <th>Ações</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr>
-                            <td colspan="4" class="loading">Carregando alunos...</td>
+                            <td colspan="5" class="loading">Carregando alunos...</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
     </div>
-
     <script src="../js/main.js"></script>
     <script>
-        document.addEventListener('DOMContentLoaded', loadAlunos);
+        document.addEventListener('DOMContentLoaded', () => {
+            loadAlunos();
+            loadCursosSelectAlunos();
+        });
         document.getElementById('formAluno').addEventListener('submit', saveAluno);
         document.getElementById('searchAlunos').addEventListener('input', searchAlunos);
     </script>
