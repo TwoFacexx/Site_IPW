@@ -466,7 +466,6 @@ async function saveProfessor(e) {
         return;
     }
 
-
     if (!disciplinasSelect) {
         showError('Erro: Campo de disciplinas não encontrado. Recarregue a página.');
         return;

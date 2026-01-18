@@ -40,5 +40,5 @@ app.use((req, res) => {
 
 const PORT = 8081;
 app.listen(PORT, () => {
-    console.log(`Frontend a correr em http://localhost:${PORT}`);  
+    console.log(`Frontend a correr em http://localhost:${PORT}`);
 });

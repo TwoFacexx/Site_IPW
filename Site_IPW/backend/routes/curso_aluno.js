@@ -6,9 +6,10 @@ const db = require('../db');
 // Retorna todos os cursos de um aluno
 router.get('/aluno/:aluno_id', (req, res) => {
     const query = `
-        SELECT c.id, c.nome
-        FROM cursos c
-        INNER JOIN curso_aluno ca ON c.id = ca.curso_id
+       
+        SELECT a.id, a.nome, a.email
+        FROM alunos a
+        INNER JOIN curso_aluno ca ON a.id = ca.aluno_id
         WHERE ca.aluno_id = ?
     `;
     
@@ -25,10 +26,11 @@ router.get('/aluno/:aluno_id', (req, res) => {
 // Retorna todos os alunos de um curso
 router.get('/curso/:curso_id', (req, res) => {
     const query = `
-        SELECT a.id, a.nome, a.email
-        FROM alunos a
-        INNER JOIN curso_aluno ca ON a.id = ca.aluno_id
+         SELECT c.id, c.nome
+        FROM cursos c
+        INNER JOIN curso_aluno ca ON c.id = ca.curso_id
         WHERE ca.curso_id = ?
+
     `;
     
     db.query(query, [req.params.curso_id], (err, result) => {
